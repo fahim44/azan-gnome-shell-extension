@@ -375,9 +375,9 @@ class Azan extends PanelMenu.Button {
           
       if (isTimeForPraying) {
           Main.notify(_("It's time for the " + this._timeNames[nearestPrayerId]) + " prayer.", _("Prayer time : " + timesStr[nearestPrayerId]));
-          this.indicatorText.set_text(_("It's time for " + this._timeNames[nearestPrayerId]));
+          this.indicatorText.set_text(this._timeNames[nearestPrayerId]);
       } else {
-          this.indicatorText.set_text(this._timeNames[nearestPrayerId] + ' -' + this._formatRemainingTimeFromMinutes(minDiffMinutes));
+          this.indicatorText.set_text('🕌️\n' + this._formatRemainingTimeFromMinutes(minDiffMinutes));
       }
   }
 
@@ -403,7 +403,7 @@ class Azan extends PanelMenu.Button {
       return hoursStr + ":" + minutesStr;
 	}
 
-		_formatHijriDate(hijriDate) {
+	_formatHijriDate(hijriDate) {
       return this._dayNames[hijriDate[4]] + ", " + hijriDate[5] + " " + this._monthNames[hijriDate[6]] + " " + hijriDate[7];
   	}
   
