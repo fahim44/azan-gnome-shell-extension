@@ -65,6 +65,17 @@ class Azan extends PanelMenu.Button {
         midnight: 'Midnight'
     };
 
+    this._indicatorPrefix = {
+        fajr: '🕌️ 🌒\n',
+        sunrise: '🌄\n',
+        dhuhr: '🕌️ 🌕\n',
+        asr: '🕌️ 🌔\n',
+        sunset: '🌇\n',
+        maghrib: '🕌️ 🌘\n',
+        isha: '🕌️ 🌑\n',
+        midnight: '🌃\n'
+    };
+
     this._timeConciseLevels = {
       fajr: 1,
       sunrise: 0,
@@ -375,9 +386,9 @@ class Azan extends PanelMenu.Button {
           
       if (isTimeForPraying) {
           Main.notify(_("It's time for the " + this._timeNames[nearestPrayerId]) + " prayer.", _("Prayer time : " + timesStr[nearestPrayerId]));
-          this.indicatorText.set_text(this._timeNames[nearestPrayerId]);
+          this.indicatorText.set_text(this._indicatorPrefix[nearestPrayerId] + this._timeNames[nearestPrayerId]);
       } else {
-          this.indicatorText.set_text('🕌️\n' + this._formatRemainingTimeFromMinutes(minDiffMinutes));
+          this.indicatorText.set_text(this._indicatorPrefix[nearestPrayerId] + this._formatRemainingTimeFromMinutes(minDiffMinutes));
       }
   }
 
